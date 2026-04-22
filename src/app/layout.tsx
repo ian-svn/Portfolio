@@ -23,9 +23,9 @@ export default function RootLayout({
     <html lang="es">
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} min-h-screen antialiased`}
+        className={`${geistSans.variable} relative min-h-screen overflow-x-hidden antialiased`}
       >
-        <main>{children}</main>
+        <main className="relative z-10">{children}</main>
       </body>
     </html>
   );

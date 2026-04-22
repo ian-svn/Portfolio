@@ -1,11 +1,16 @@
 import type { ComponentType } from "react";
 import {
+  SiC,
+  SiCplusplus,
   SiCss,
   SiGit,
   SiHtml5,
   SiJavascript,
   SiKotlin,
+  SiLaravel,
+  SiMysql,
   SiNextdotjs,
+  SiPhp,
   SiPython,
   SiReact,
   SiSanity,
@@ -15,6 +20,7 @@ import {
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa6";
 import { GiJoystick } from "react-icons/gi";
+import { TbBrandCSharp } from "react-icons/tb";
 
 type Props = {
   tech: string;
@@ -36,6 +42,12 @@ const iconByTech: Record<string, ComponentType<{ className?: string }>> = {
   Python: SiPython,
   Kotlin: SiKotlin,
   libGDX: GiJoystick,
+  MySQL: SiMysql,
+  PHP: SiPhp,
+  Laravel: SiLaravel,
+  C: SiC,
+  "C++": SiCplusplus,
+  "C#": TbBrandCSharp,
 };
 
 export function TechIcon({ tech, className = "h-4 w-4" }: Props) {
