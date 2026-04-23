@@ -18,6 +18,7 @@ export type Certificate = {
   issuer: string;
   issueDate?: string;
   description?: string;
+  credentialPdfUrl?: string;
   credentialUrl?: string;
   skills?: string[];
 };
@@ -42,6 +43,10 @@ export const CERTIFICATES_QUERY = groq`
     issuer,
     issueDate,
     description,
+    "credentialPdfUrl": select(
+      defined(credentialFile.asset->url) => credentialFile.asset->url,
+      credentialUrl
+    ),
     credentialUrl,
     skills
   }

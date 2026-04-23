@@ -5,25 +5,52 @@ import type { Project } from "@/sanity/lib/queries";
 
 export function ProjectCard({ project }: { project: Project }) {
   const imageUrl = project.mainImage ? urlFor(project.mainImage).width(900).height(600).url() : null;
+  const cardTargetUrl = project.liveUrl || project.githubUrl || null;
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-card/70 shadow-card ring-1 ring-white/[0.04] transition duration-300 hover:-translate-y-1 hover:border-gold/45 hover:shadow-glow hover:ring-gold/15">
       <div className="relative aspect-[16/10] bg-black/40">
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt={project.title}
-            className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-          />
+        {cardTargetUrl ? (
+          <Link
+            href={cardTargetUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Abrir proyecto ${project.title}`}
+            className="block h-full w-full"
+          >
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt={project.title}
+                className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+              />
+            ) : (
+              <div className="flex h-full items-center justify-center text-sm text-muted transition duration-300 group-hover:scale-[1.03]">
+                Sin imagen
+              </div>
+            )}
+          </Link>
         ) : (
-          <div className="flex h-full items-center justify-center text-sm text-muted">
-            Sin imagen
-          </div>
+          <>
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt={project.title}
+                className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+              />
+            ) : (
+              <div className="flex h-full items-center justify-center text-sm text-muted">
+                Sin imagen
+              </div>
+            )}
+          </>
         )}
       </div>
       <div className="flex flex-1 flex-col gap-4 p-5">
         <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">{project.title}</h3>
-        <p className="line-clamp-3 text-sm leading-relaxed text-muted">{project.description}</p>
+        <div className="scroll-reveal max-h-24 overflow-y-auto pr-1">
+          <p className="text-sm leading-relaxed text-muted">{project.description}</p>
+        </div>
         <div className="flex flex-wrap gap-2">
           {(project.technologies ?? []).map((tech) => (
             <span

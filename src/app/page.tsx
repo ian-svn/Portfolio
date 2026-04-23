@@ -6,8 +6,8 @@ import { MdOutlineEmail } from "react-icons/md";
 import { SiFigma, SiGithub, SiMeta, SiSpring, SiWhatsapp } from "react-icons/si";
 
 import ianImage from "@/app/ian.png";
-import { CertificateCard } from "@/components/certificate-card";
-import { ProjectCard } from "@/components/project-card";
+import { CertificatesSection } from "@/components/certificates-section";
+import { ProjectsSection } from "@/components/projects-section";
 import { TechIcon } from "@/components/tech-icon";
 import { client } from "@/sanity/lib/client";
 import {
@@ -50,7 +50,7 @@ export default async function Home() {
       issueDate: "2025-11-01",
       description: "Arquitectura con Spring, seguridad web y autenticacion con JWT.",
       skills: ["Java", "Spring", "Security"],
-      credentialUrl: "https://www.linkedin.com/",
+      credentialPdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
       _id: "cert-2",
@@ -59,7 +59,7 @@ export default async function Home() {
       issueDate: "2025-08-20",
       description: "Construccion de apps modernas con frontend performante y backend integrado.",
       skills: ["React", "Next.js", "TypeScript"],
-      credentialUrl: "https://www.linkedin.com/",
+      credentialPdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
   ];
 
@@ -304,13 +304,7 @@ export default async function Home() {
           </div>
           <p className="max-w-md text-sm text-muted">Gestionados desde Sanity CMS</p>
         </div>
-        <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <li key={project._id}>
-              <ProjectCard project={project} />
-            </li>
-          ))}
-        </ul>
+        <ProjectsSection projects={projects} />
       </section>
 
       <section
@@ -326,13 +320,7 @@ export default async function Home() {
           </div>
           <p className="max-w-md text-sm text-muted">Tambien gestionadas desde Sanity CMS</p>
         </div>
-        <ul className="grid gap-6 md:grid-cols-2">
-          {certificates.map((certificate) => (
-            <li key={certificate._id}>
-              <CertificateCard certificate={certificate} />
-            </li>
-          ))}
-        </ul>
+        <CertificatesSection certificates={certificates} />
       </section>
 
       <section

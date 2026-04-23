@@ -16,7 +16,9 @@ export function CertificateCard({ certificate }: { certificate: Certificate }) {
       <p className="mt-1.5 text-sm font-medium text-gold/90">{certificate.issuer}</p>
       <p className="mt-2 text-[11px] font-medium uppercase tracking-[0.18em] text-muted">{dateLabel}</p>
       {certificate.description ? (
-        <p className="mt-3 text-sm leading-relaxed text-muted">{certificate.description}</p>
+        <div className="scroll-reveal mt-3 max-h-24 overflow-y-auto pr-1">
+          <p className="text-sm leading-relaxed text-muted">{certificate.description}</p>
+        </div>
       ) : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {(certificate.skills ?? []).map((skill) => (
@@ -28,10 +30,11 @@ export function CertificateCard({ certificate }: { certificate: Certificate }) {
           </span>
         ))}
       </div>
-      {certificate.credentialUrl ? (
+      {certificate.credentialPdfUrl ? (
         <Link
-          href={certificate.credentialUrl}
+          href={certificate.credentialPdfUrl}
           target="_blank"
+          rel="noopener noreferrer"
           className="mt-5 inline-flex w-fit rounded-lg border border-gold/45 bg-black/20 px-3 py-2 text-sm text-gold backdrop-blur-sm transition hover:border-gold hover:bg-gold/10"
         >
           Ver credencial

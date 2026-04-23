@@ -35,6 +35,15 @@ export default defineType({
       type: "url",
     }),
     defineField({
+      name: "credentialFile",
+      title: "Archivo PDF de credencial",
+      type: "file",
+      options: {
+        accept: "application/pdf",
+      },
+      description: "Subi el PDF de la credencial para abrirlo desde el portfolio.",
+    }),
+    defineField({
       name: "skills",
       title: "Skills relacionadas",
       type: "array",
