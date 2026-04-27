@@ -18,6 +18,13 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "issuerLogo",
+      title: "Logo de la empresa",
+      type: "image",
+      options: { hotspot: true },
+      description: "Logo de la institucion u organizacion que emite el certificado.",
+    }),
+    defineField({
       name: "issueDate",
       title: "Fecha de emision",
       type: "date",
@@ -55,6 +62,7 @@ export default defineType({
     select: {
       title: "title",
       subtitle: "issuer",
+      media: "issuerLogo",
     },
   },
 });

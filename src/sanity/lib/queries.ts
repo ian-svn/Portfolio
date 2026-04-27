@@ -16,6 +16,7 @@ export type Certificate = {
   _id: string;
   title: string;
   issuer: string;
+  issuerLogo?: SanityImageSource;
   issueDate?: string;
   description?: string;
   credentialPdfUrl?: string;
@@ -41,6 +42,7 @@ export const CERTIFICATES_QUERY = groq`
     _id,
     title,
     issuer,
+    issuerLogo,
     issueDate,
     description,
     "credentialPdfUrl": select(

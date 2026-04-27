@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { CertificateCard } from "@/components/certificate-card";
 import type { Certificate } from "@/sanity/lib/queries";
 
-const INITIAL_VISIBLE_ITEMS = 6;
+const INITIAL_VISIBLE_ITEMS = 4;
 
 export function CertificatesSection({ certificates }: { certificates: Certificate[] }) {
   const [isExpanded, setIsExpanded] = useState(false);
